@@ -27,8 +27,24 @@ const Subreddit: NextPage<Props> = (props: Props) => {
         {props.posts.length
           ? props.posts.map((post) => (
               <article key={post.id}>
-                <h3>{post.title}</h3>
-                <div style={{ whiteSpace: "pre-line" }}>{post.selftext}</div>
+                <header>
+                  <h3>{post.title}</h3>
+                  <p>By: {post.author_fullname}</p>
+                  <p>
+                    Posted: {new Date(post.created_utc * 1000).toUTCString()}
+                  </p>
+                </header>
+                <div
+                  style={{ whiteSpace: "pre-line", wordBreak: "break-word" }}
+                >
+                  {post.selftext}
+                </div>
+                <p>
+                  <a target="_blank" rel="noopener noreferer" href={post.url}>
+                    Read thread
+                  </a>
+                </p>
+                <hr />
               </article>
             ))
           : "No posts found"}

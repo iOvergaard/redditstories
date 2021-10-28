@@ -28,7 +28,11 @@ const Subreddit: NextPage<Props> = (props: Props) => {
           ? props.posts.map((post) => (
               <article key={post.id}>
                 <header>
-                  <h3>{post.title}</h3>
+                  <h3
+                    style={{ whiteSpace: "pre-line", wordBreak: "break-word" }}
+                  >
+                    {post.title}
+                  </h3>
                   <p>By: {post.author_fullname}</p>
                   <p>
                     Posted: {new Date(post.created_utc * 1000).toUTCString()}

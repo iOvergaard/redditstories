@@ -15,9 +15,9 @@ export async function tryGetSubreddit(name: string) {
   }
 
   let posts = meta.data.children
-    .filter((post) => !post.data.stickied)
-    .map((post) => post.data);
-  posts = posts.map((post) =>
+    .filter((post: any) => !post.data.stickied)
+    .map((post: any) => post.data);
+  posts = posts.map((post: any) =>
     pick(post, [
       "id",
       "title",

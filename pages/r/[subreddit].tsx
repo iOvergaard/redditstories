@@ -40,7 +40,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
                   {post.selftext}
                 </div>
                 <p>
-                  <a target="_blank" rel="noopener noreferer" href={post.url}>
+                  <a target="_blank" rel="noopener noreferrer" href={post.url}>
                     Read thread
                   </a>
                 </p>

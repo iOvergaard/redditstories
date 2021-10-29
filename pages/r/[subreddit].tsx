@@ -1,5 +1,4 @@
-import hljs from 'https://cdn.skypack.dev/highlight.js';
-import marked from 'https://cdn.skypack.dev/marked';
+import marked from 'marked';
 import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
 import Head from 'next/head';
 
@@ -79,12 +78,6 @@ export async function getStaticProps(
       notFound: true,
     };
   }
-
-  marked.setOptions({
-    highlight: function (code: any, language: any) {
-      return hljs.highlight(code, { language }).value;
-    },
-  });
 
   posts.forEach((post: any) => {
     post.selftext = marked(post.selftext);

@@ -22,7 +22,6 @@ export async function tryGetSubreddit(name: string) {
       "id",
       "title",
       "selftext",
-      "selftext_html",
       "author_fullname",
       "created_utc",
       "url",

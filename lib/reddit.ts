@@ -22,9 +22,11 @@ export async function tryGetSubreddit(name: string) {
       "id",
       "title",
       "selftext",
-      "author_fullname",
+      "author",
       "created_utc",
       "url",
+      "ups",
+      "num_comments",
     ])
   );
   return posts;

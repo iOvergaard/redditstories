@@ -6,19 +6,19 @@ type Props = {
 
 export default function Post({ post }: Props) {
   return (
-    <article>
+    <article className={styles.post}>
       <header>
-        <h3 className={styles.title}>{post.title}</h3>
-        <p>By: {post.author_fullname}</p>
-        <p>Posted: {new Date(post.created_utc * 1000).toUTCString()}</p>
+        <h3>{post.title}</h3>
+        <p className={styles.byline}>
+          Posted {new Date(post.created_utc * 1000).toUTCString()} by{" "}
+          {post.author} with {post.ups} upvotes
+        </p>
       </header>
-      <div
-        className={styles.text}
-        dangerouslySetInnerHTML={{ __html: post.selftext }}
-      ></div>
+      <hr />
+      <div dangerouslySetInnerHTML={{ __html: post.selftext }}></div>
       <p>
         <a target="_blank" rel="noopener noreferrer" href={post.url}>
-          Read thread
+          See comments ({post.num_comments})
         </a>
       </p>
     </article>

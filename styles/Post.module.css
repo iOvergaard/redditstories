@@ -1,9 +1,9 @@
-.title .text {
-  white-space: pre-line;
+.post {
   word-break: break-word;
   hyphens: auto;
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
-.text {
-  line-height: 1.5;
+.byline {
+  font-size: 0.8em;
 }

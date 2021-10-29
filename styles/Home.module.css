@@ -14,22 +14,6 @@
   align-items: center;
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -47,12 +31,6 @@
   font-size: 3rem;
   word-break: break-word;
   hyphens: auto;
-}
-
-@media screen and (max-width:360px) {
-  .title {
-    font-size: 1.5rem;
-  }
 }
 
 .title,
@@ -119,6 +97,9 @@
 }
 
 @media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
   .grid {
     width: 100%;
     flex-direction: column;

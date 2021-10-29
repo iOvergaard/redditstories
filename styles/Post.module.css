@@ -3,9 +3,12 @@
   word-break: break-word;
   hyphens: auto;
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
-  text-align: justify;
 }
 
 .byline {
   font-size: 0.8em;
+}
+
+.text {
+  text-align: justify;
 }

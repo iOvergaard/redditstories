@@ -24,7 +24,6 @@ const RedditImages = ({ images }: any): JSX.Element => (
 );
 
 export default function Post({ post }: Props) {
-  console.log(post.images);
   return (
     <article className={styles.post}>
       <header>
@@ -36,7 +35,10 @@ export default function Post({ post }: Props) {
       </header>
       <hr />
       <RedditImages images={post.images} />
-      <div dangerouslySetInnerHTML={{ __html: post.selftext }}></div>
+      <div
+        className={styles.text}
+        dangerouslySetInnerHTML={{ __html: post.selftext }}
+      ></div>
       <p>
         <a target="_blank" rel="noopener noreferrer" href={post.url}>
           See comments ({post.num_comments})

@@ -11,12 +11,11 @@ const RedditImages = ({ images }: any): JSX.Element => (
     {images.length
       ? images.map((image: any) => (
           <Image
-            key={image.url}
+            key={image.src}
             alt=""
-            src={image.url}
-            width={image.width}
-            height={image.height}
             layout="responsive"
+            sizes="756px"
+            {...image}
           />
         ))
       : ""}

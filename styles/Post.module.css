@@ -2,6 +2,7 @@
   word-break: break-word;
   hyphens: auto;
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  text-align: justify;
 }
 
 .byline {

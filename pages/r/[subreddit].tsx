@@ -3,7 +3,9 @@ import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, Next
 import Head from 'next/head';
 
 import Layout from '../../components/layout';
+import Post from '../../components/post';
 import { tryGetSubreddit } from '../../lib/reddit';
+import styles from '../../styles/Subreddit.module.css';
 
 type Props = {
   subreddit: string;
@@ -21,25 +23,9 @@ const Subreddit: NextPage<Props> = (props: Props) => {
 
       {props.posts.length
         ? props.posts.map((post) => (
-            <article key={post.id}>
-              <header>
-                <h3 style={{ whiteSpace: "pre-line", wordBreak: "break-word" }}>
-                  {post.title}
-                </h3>
-                <p>By: {post.author_fullname}</p>
-                <p>Posted: {new Date(post.created_utc * 1000).toUTCString()}</p>
-              </header>
-              <div
-                style={{ whiteSpace: "pre-line", wordBreak: "break-word" }}
-                dangerouslySetInnerHTML={{ __html: post.selftext }}
-              ></div>
-              <p>
-                <a target="_blank" rel="noopener noreferrer" href={post.url}>
-                  Read thread
-                </a>
-              </p>
-              <hr />
-            </article>
+            <div key={post.id} className={styles.post}>
+              <Post post={post} />
+            </div>
           ))
         : "No posts found"}
     </Layout>

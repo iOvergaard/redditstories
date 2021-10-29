@@ -1,0 +1,9 @@
+.title .text {
+  white-space: pre-line;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.text {
+  line-height: 1.5;
+}

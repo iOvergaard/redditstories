@@ -1,0 +1,5 @@
+.post {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--text-color);
+  margin-bottom: 1rem;
+}

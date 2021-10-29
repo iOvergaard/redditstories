@@ -1,6 +1,6 @@
 :root {
   --background-color: white;
-  --text-color: rgb(41, 41, 41);
+  --text-color: #292929;
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -34,4 +34,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+  html,
+  body {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }

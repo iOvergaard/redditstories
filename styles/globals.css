@@ -1,6 +1,6 @@
 :root {
   --background-color: white;
-  --text-color: #666;
+  --text-color: rgb(41, 41, 41);
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -14,8 +14,15 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto",
+    "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.063px;
+  line-height: 32px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   background-color: var(--background-color);
   color: var(--text-color);
 }

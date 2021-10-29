@@ -1,12 +1,10 @@
-import {
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-  NextPage,
-} from "next";
-import Head from "next/head";
-import { tryGetSubreddit } from "../../lib/reddit";
-import styles from "../../styles/Home.module.css";
+import hljs from 'https://cdn.skypack.dev/highlight.js';
+import marked from 'https://cdn.skypack.dev/marked';
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
+import Head from 'next/head';
+
+import { tryGetSubreddit } from '../../lib/reddit';
+import styles from '../../styles/Home.module.css';
 
 type Props = {
   subreddit: string;
@@ -40,9 +38,8 @@ const Subreddit: NextPage<Props> = (props: Props) => {
                 </header>
                 <div
                   style={{ whiteSpace: "pre-line", wordBreak: "break-word" }}
-                >
-                  {post.selftext}
-                </div>
+                  dangerouslySetInnerHTML={{ __html: post.selftext }}
+                ></div>
                 <p>
                   <a target="_blank" rel="noopener noreferrer" href={post.url}>
                     Read thread
@@ -75,13 +72,23 @@ export async function getStaticProps(
     };
   }
 
-  const posts = await tryGetSubreddit(subreddit);
+  let posts = await tryGetSubreddit(subreddit);
 
   if (!posts) {
     return {
       notFound: true,
     };
   }
+
+  marked.setOptions({
+    highlight: function (code: any, language: any) {
+      return hljs.highlight(code, { language }).value;
+    },
+  });
+
+  posts.forEach((post: any) => {
+    post.selftext = marked(post.selftext);
+  });
 
   return {
     props: {

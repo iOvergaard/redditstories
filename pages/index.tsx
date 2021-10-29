@@ -16,21 +16,19 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.grid}>
-        <Link href="/r/talesfromtechsupport">
-          <a className={styles.card}>
-            <h2>TalesFromTechSupport &rarr;</h2>
-            <p>Read more!</p>
-          </a>
-        </Link>
+      <ul className={styles.list}>
+        <li className={styles.card}>
+          <Link href="/r/talesfromtechsupport">
+            <a>TalesFromTechSupport &rarr;</a>
+          </Link>
+        </li>
 
-        <Link href="/r/gonewildstories">
-          <a className={styles.card}>
-            <h2>GoneWildStories &rarr;</h2>
-            <p>Read more!</p>
-          </a>
-        </Link>
-      </div>
+        <li className={styles.card}>
+          <Link href="/r/gonewildstories">
+            <a>GoneWildStories &rarr;</a>
+          </Link>
+        </li>
+      </ul>
     </Layout>
   );
 };

@@ -15,6 +15,8 @@ export async function tryGetSubreddit(name: string) {
     throw new Error("No data");
   }
 
+  const after = meta.data.after;
+
   let posts = meta.data.children
     .filter((post: any) => !post.data.stickied)
     .map((post: any) => post.data);
@@ -70,5 +72,5 @@ export async function tryGetSubreddit(name: string) {
         "images",
       ])
     );
-  return posts;
+  return { after, posts };
 }

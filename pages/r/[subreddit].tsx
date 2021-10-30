@@ -1,4 +1,3 @@
-import marked from "marked";
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -7,7 +6,6 @@ import {
 } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-
 import Layout from "../../components/layout";
 import Post from "../../components/post";
 import { tryGetSubreddit } from "../../lib/reddit";

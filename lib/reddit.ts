@@ -47,18 +47,28 @@ export async function tryGetSubreddit(name: string) {
     })
   );
 
-  posts = posts.map((post: any) =>
-    pick(post, [
-      "id",
-      "title",
-      "selftext",
-      "author",
-      "created_utc",
-      "url",
-      "ups",
-      "num_comments",
-      "images",
-    ])
-  );
+  posts = posts
+    .map((post: any) => {
+      try {
+        post.selftext = marked(post.selftext);
+        post.selftext = sanitizeHtml(post.selftext);
+      } catch (e) {
+        console.error("Could not parse selftext", e);
+      }
+      return post;
+    })
+    .map((post: any) =>
+      pick(post, [
+        "id",
+        "title",
+        "selftext",
+        "author",
+        "created_utc",
+        "url",
+        "ups",
+        "num_comments",
+        "images",
+      ])
+    );
   return posts;
 }

@@ -5,6 +5,10 @@
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
+.post video {
+  width: 100%;
+}
+
 .byline {
   font-size: 0.8em;
 }

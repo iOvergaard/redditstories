@@ -6,21 +6,25 @@ type Props = {
   post: any;
 };
 
-const RedditImages = ({ images }: any): JSX.Element => (
-  <>
-    {images.length
-      ? images.map((image: any) => (
-          <Image
-            key={image.src}
-            alt=""
-            layout="responsive"
-            sizes="756px"
-            {...image}
-          />
-        ))
-      : ""}
-  </>
-);
+const RedditImages = ({ post }: any): JSX.Element => {
+  if (!!post.video) {
+    return <video src={post.video.src} controls></video>;
+  }
+
+  if (post.images?.length) {
+    return post.images.map((image: any) => (
+      <Image
+        key={image.src}
+        alt=""
+        layout="responsive"
+        sizes="756px"
+        {...image}
+      />
+    ));
+  }
+
+  return <></>;
+};
 
 export default function Post({ post }: Props) {
   return (
@@ -33,7 +37,7 @@ export default function Post({ post }: Props) {
         </p>
       </header>
       <hr />
-      <RedditImages images={post.images} />
+      <RedditImages post={post} />
       <div
         className={styles.text}
         dangerouslySetInnerHTML={{ __html: post.selftext }}

@@ -42,7 +42,6 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
 
   posts = await Promise.all(
     posts.map(async (post: any) => {
-      post.images = [];
       if (post.preview?.images?.length) {
         post.images = await Promise.all(
           post.preview.images.map(async (image: any) => {
@@ -52,6 +51,13 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
             return { ...img, blurDataURL: base64, placeholder: "blur" };
           })
         );
+      }
+
+      if (post.preview?.reddit_video_preview) {
+        post.video = {
+          src: post.preview.reddit_video_preview.fallback_url,
+          isGif: post.preview.reddit_video_preview.is_gif,
+        };
       }
 
       return post;
@@ -79,6 +85,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
         "ups",
         "num_comments",
         "images",
+        "video",
       ])
     );
   return { after, posts };

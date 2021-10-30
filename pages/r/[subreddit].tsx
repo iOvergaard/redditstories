@@ -1,11 +1,17 @@
-import marked from 'marked';
-import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
-import Head from 'next/head';
+import marked from "marked";
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage,
+} from "next";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
-import Layout from '../../components/layout';
-import Post from '../../components/post';
-import { tryGetSubreddit } from '../../lib/reddit';
-import styles from '../../styles/Subreddit.module.css';
+import Layout from "../../components/layout";
+import Post from "../../components/post";
+import { tryGetSubreddit } from "../../lib/reddit";
+import styles from "../../styles/Subreddit.module.css";
 
 type Props = {
   subredditName: string;
@@ -13,7 +19,25 @@ type Props = {
 };
 
 const Subreddit: NextPage<Props> = (props: Props) => {
+  const [after, setAfter] = useState<string>(props.subreddit.after);
+  const [count, setCount] = useState(25);
   const [posts, setPosts] = useState<any>(props.subreddit.posts);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [posts]);
+
+  const onLoadMore = async () => {
+    const requestUrl = `/api/subreddit?subreddit=${props.subredditName}&after=${after}&count=${count}`;
+    const response = await fetch(requestUrl).then((r) => r.json());
+
+    if (response) {
+      setAfter(response.after);
+      setCount(count + 25);
+      setPosts(response.posts);
+    }
+  };
+
   return (
     <Layout title={props.subredditName}>
       <Head>
@@ -29,6 +53,9 @@ const Subreddit: NextPage<Props> = (props: Props) => {
             </div>
           ))
         : "No posts found"}
+      <button type="button" onClick={() => onLoadMore()}>
+        Load more
+      </button>
     </Layout>
   );
 };

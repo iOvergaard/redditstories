@@ -1,13 +1,32 @@
-import { pick } from 'lodash';
-import { getPlaiceholder } from 'plaiceholder';
+import { pick } from "lodash";
+import marked from "marked";
+import { getPlaiceholder } from "plaiceholder";
+import sanitizeHtml from "sanitize-html";
 
-export async function tryGetSubreddit(name: string) {
+export type SubredditOpts = {
+  after?: string;
+  count?: number;
+};
+
+export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
   const baseUrl = "https://www.reddit.com/";
   if (!name) {
     throw new Error("No name provided");
   }
 
-  const meta = await fetch(`${baseUrl}r/${name}.json`)
+  let requestUrl = `${baseUrl}r/${name}.json?raw_json=1`;
+
+  if (opts?.after) {
+    requestUrl += `&after=${opts.after}`;
+  }
+
+  if (opts?.count) {
+    requestUrl += `&count=${opts.count}`;
+  }
+
+  console.log("[Reddit] Making a request for", requestUrl);
+
+  const meta = await fetch(requestUrl)
     .then((r) => r.json())
     .catch(() => undefined);
 
@@ -33,16 +52,6 @@ export async function tryGetSubreddit(name: string) {
             return { ...img, blurDataURL: base64, placeholder: "blur" };
           })
         );
-        // post.images = post.preview.images.map(
-        //   (image: any) => image.resolutions[image.resolutions.length - 1]
-        // );
-        // await Promise.all(
-        //   post.images.map(async (image: any) => {
-        //     const url = image.url.replace(/&amp;/g, "&");
-        //     const { base64, img } = await getPlaiceholder(url);
-        //     return { ...img, blurDataURL: base64 };
-        //   })
-        // );
       }
 
       return post;

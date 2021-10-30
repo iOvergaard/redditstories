@@ -30,7 +30,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
     .then((r) => r.json())
     .catch(() => undefined);
 
-  if (!meta) {
+  if (!meta?.data?.children?.length) {
     throw new Error("No data");
   }
 

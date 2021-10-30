@@ -51,7 +51,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
             </div>
           ))
         : "No posts found"}
-      <button type="button" onClick={() => onLoadMore()}>
+      <button type="button" onClick={onLoadMore}>
         Load more
       </button>
     </Layout>
@@ -76,21 +76,27 @@ export async function getStaticProps(
     };
   }
 
-  let subreddit = await tryGetSubreddit(subredditName);
+  try {
+    let subreddit = await tryGetSubreddit(subredditName);
 
-  if (!subreddit) {
+    if (!subreddit) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        subredditName,
+        subreddit,
+      },
+      revalidate: 300,
+    };
+  } catch {
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      subredditName,
-      subreddit,
-    },
-    revalidate: 300,
-  };
 }
 
 export default Subreddit;

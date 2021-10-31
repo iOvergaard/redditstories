@@ -8,7 +8,7 @@ type Props = {
 
 const RedditImages = ({ post }: any): JSX.Element => {
   if (!!post.video) {
-    return <video src={post.video.src} controls></video>;
+    return <video src={post.video.src} controls loop></video>;
   }
 
   if (post.images?.length) {

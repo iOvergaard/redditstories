@@ -9,9 +9,6 @@ const links = [
     "/r/askwomen",
     "/r/askmen",
     "/r/askhistorians",
-    "/r/bestof",
-    "/r/explainitlikeimfive",
-    "/r/outoftheloop",
     "/r/gonewildstories"
 ];
 

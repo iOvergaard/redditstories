@@ -9,6 +9,12 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   const router = useRouter();
 
+  const links = [
+    "/r/talesfromtechsupport",
+    "/r/talesfromretail",
+    "/r/gonewildstories"
+  ];
+
   const navigateToSubreddit = (subreddit: string): void => {
     const url = `/r/${subreddit}`;
     router.push(url, url);
@@ -33,29 +39,18 @@ const Home: NextPage = () => {
           type="search"
           name="search"
           placeholder="Type subreddit..."
-          list="subreddits"
         />
-        <datalist id="subreddits">
-          <option value="gonewild" />
-          <option value="gonewildcouples" />
-          <option value="celebnsfw" />
-          <option value="holdthemoan" />
-          <option value="nsfw" />
-        </datalist>
+        <button>Go</button>
       </form>
 
       <ul className={styles.list}>
+        {links.map(link => (
         <li className={styles.card}>
-          <Link href="/r/talesfromtechsupport">
-            <a>TalesFromTechSupport &rarr;</a>
+          <Link href={link}>
+            <a>{link} &rarr;</a>
           </Link>
         </li>
-
-        <li className={styles.card}>
-          <Link href="/r/gonewildstories">
-            <a>GoneWildStories &rarr;</a>
-          </Link>
-        </li>
+        ))}
       </ul>
     </Layout>
   );

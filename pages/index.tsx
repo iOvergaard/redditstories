@@ -5,15 +5,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import Layout from "../components/layout";
 import styles from "../styles/Home.module.css";
+import links from "../lib/links";
 
 const Home: NextPage = () => {
   const router = useRouter();
-
-  const links = [
-    "/r/talesfromtechsupport",
-    "/r/talesfromretail",
-    "/r/gonewildstories"
-  ];
 
   const navigateToSubreddit = (subreddit: string): void => {
     const url = `/r/${subreddit}`;

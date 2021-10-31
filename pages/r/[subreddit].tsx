@@ -10,6 +10,7 @@ import Layout from "../../components/layout";
 import Post from "../../components/post";
 import { tryGetSubreddit } from "../../lib/reddit";
 import styles from "../../styles/Subreddit.module.css";
+import paths from "../../lib/links";
 
 type Props = {
   subredditName: string;
@@ -60,7 +61,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
 
 export function getStaticPaths(): GetStaticPathsResult {
   return {
-    paths: ["/r/gonewildstories", "/r/talesfromtechsupport"],
+    paths,
     fallback: "blocking",
   };
 }

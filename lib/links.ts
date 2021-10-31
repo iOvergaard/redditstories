@@ -6,9 +6,6 @@ const links = [
     "/r/nostalgia",
     "/r/tifu",
     "/r/justnomil",
-    "/r/askwomen",
-    "/r/askmen",
-    "/r/askhistorians",
     "/r/gonewildstories"
 ];
 

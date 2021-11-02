@@ -21,12 +21,14 @@ const Subreddit: NextPage<Props> = (props: Props) => {
   const [after, setAfter] = useState<string>(props.subreddit.after);
   const [count, setCount] = useState(25);
   const [posts, setPosts] = useState<any>(props.subreddit.posts);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [posts]);
 
   const onLoadMore = async () => {
+    setIsLoading(true);
     const requestUrl = `/api/subreddit?subreddit=${props.subredditName}&after=${after}&count=${count}`;
     const response = await fetch(requestUrl).then((r) => r.json());
 
@@ -35,6 +37,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
       setCount(count + 25);
       setPosts(response.posts);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -53,7 +56,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
           ))
         : "No posts found"}
       <button type="button" onClick={onLoadMore}>
-        Load more
+        {isLoading ? "Loading..." : "Load more"}
       </button>
     </Layout>
   );

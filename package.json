@@ -10,24 +10,23 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "marked": "^3.0.8",
-    "next": "12.0.5",
+    "marked": "^4.0.10",
+    "next": "12.0.8",
     "plaiceholder": "^2.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sanitize-html": "^2.5.2",
-    "sharp": "^0.29.2",
-    "swr": "^1.0.1"
+    "sanitize-html": "^2.6.1",
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.176",
     "@types/marked": "^3.0.2",
     "@types/node": "16.11.6",
     "@types/react": "17.0.33",
-    "@types/sanitize-html": "^2.5.0",
+    "@types/sanitize-html": "^2.6.2",
     "eslint": "7",
-    "eslint-config-next": "12.0.1",
-    "prettier": "^2.4.1",
+    "eslint-config-next": "12.0.8",
+    "prettier": "^2.5.1",
     "typescript": "4.4.4"
   }
 }

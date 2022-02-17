@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 
 import styles from '../styles/Post.module.css';
 
@@ -7,7 +8,7 @@ type Props = {
 };
 
 const RedditImages = ({ post }: any): JSX.Element => {
-  if (!!post.video) {
+  if (post.video) {
     return <video src={post.video.src} controls loop></video>;
   }
 

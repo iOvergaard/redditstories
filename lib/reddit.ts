@@ -45,10 +45,16 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
       if (post.preview?.images?.length) {
         post.images = await Promise.all(
           post.preview.images.map(async (image: any) => {
-            const resolution = image.resolutions[image.resolutions.length - 1];
-            const url = resolution.url.replace(/&amp;/g, "&");
-            const { base64, img } = await getPlaiceholder(url);
-            return { ...img, blurDataURL: base64, placeholder: "blur", priority: i === 0 };
+            try {
+              // const resolution = image.resolutions[image.resolutions.length - 1];
+              const resolution = image.source;
+              const url = resolution.url.replace(/&amp;/g, "&");
+              const { base64, img } = await getPlaiceholder(url);
+              return { ...img, blurDataURL: base64, placeholder: "blur", priority: i === 0, width: resolution.width, height: resolution.height };
+            } catch (e) {
+              console.error('Something went wrong', e)
+              return null;
+            }
           })
         );
       }

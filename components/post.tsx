@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import styles from "../styles/Post.module.css";
+import styles from '../styles/Post.module.css';
 
 type Props = {
   post: any;

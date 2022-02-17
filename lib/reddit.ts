@@ -8,6 +8,12 @@ export type SubredditOpts = {
   count?: number;
 };
 
+async function getPlaiceholderImage(url: string, hasPriority = false) {
+  url = url.replace(/&amp;/g, "&");
+  const { base64, img } = await getPlaiceholder(url);
+  return { ...img, blurDataURL: base64, placeholder: "blur", priority: hasPriority };
+}
+
 export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
   const baseUrl = "https://www.reddit.com/";
   if (!name) {
@@ -48,9 +54,8 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
             try {
               // const resolution = image.resolutions[image.resolutions.length - 1];
               const resolution = image.source;
-              const url = resolution.url.replace(/&amp;/g, "&");
-              const { base64, img } = await getPlaiceholder(url);
-              return { ...img, blurDataURL: base64, placeholder: "blur", priority: i === 0, width: resolution.width, height: resolution.height };
+              const img = await getPlaiceholderImage(resolution.url, i === 0);
+              return { ...img, width: resolution.width, height: resolution.height };
             } catch (e) {
               console.error('Something went wrong', e)
               return null;

@@ -41,14 +41,14 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
     .map((post: any) => post.data);
 
   posts = await Promise.all(
-    posts.map(async (post: any) => {
+    posts.map(async (post: any, i: number) => {
       if (post.preview?.images?.length) {
         post.images = await Promise.all(
           post.preview.images.map(async (image: any) => {
             const resolution = image.resolutions[image.resolutions.length - 1];
             const url = resolution.url.replace(/&amp;/g, "&");
             const { base64, img } = await getPlaiceholder(url);
-            return { ...img, blurDataURL: base64, placeholder: "blur" };
+            return { ...img, blurDataURL: base64, placeholder: "blur", priority: i === 0 };
           })
         );
       }

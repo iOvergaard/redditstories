@@ -27,7 +27,7 @@ const RedditImages = ({ post }: any): JSX.Element => {
   return <></>;
 };
 
-export default function Post({ post }: Props) {
+export default function Post({ post }: Props): JSX.Element {
   return (
     <article className={styles.post}>
       <header>
@@ -49,5 +49,5 @@ export default function Post({ post }: Props) {
         </a>
       </p>
     </article>
-  );
+  )
 }

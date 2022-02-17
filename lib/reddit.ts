@@ -1,5 +1,5 @@
 import { pick } from 'lodash';
-import { parse } from 'marked';
+import { marked } from 'marked';
 import { getPlaiceholder } from 'plaiceholder';
 import sanitizeHtml from 'sanitize-html';
 
@@ -78,7 +78,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
   posts = posts
     .map((post: any) => {
       try {
-        post.selftext = parse(post.selftext, { mangle: true });
+        post.selftext = marked(post.selftext, { mangle: true });
         post.selftext = sanitizeHtml(post.selftext);
       } catch (e) {
         console.error("Could not parse selftext", e);

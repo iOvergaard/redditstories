@@ -13,8 +13,8 @@
     "marked": "^4.0.10",
     "next": "^12.1.6",
     "plaiceholder": "^2.3.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "sanitize-html": "^2.7.0",
     "sharp": "^0.30.5"
   },
@@ -22,11 +22,11 @@
     "@types/lodash": "^4.14.176",
     "@types/marked": "^4.0.2",
     "@types/node": "16.11.6",
-    "@types/react": "17.0.39",
+    "@types/react": "18.0.9",
     "@types/sanitize-html": "^2.6.2",
     "eslint": "7",
     "eslint-config-next": "^12.1.0",
     "prettier": "^2.5.1",
-    "typescript": "4.4.4"
+    "typescript": "4.7.2"
   }
 }

@@ -12,9 +12,9 @@ export default function Layout(props: Props) {
     <div className={styles.container}>
       <main className={styles.main}>
         <Link href="/">
-          <a>
-            <h1 className={styles.title}>{props.title}</h1>
-          </a>
+
+          <h1 className={styles.title}>{props.title}</h1>
+
         </Link>
         {props.children}
       </main>

@@ -45,7 +45,7 @@ const Home: NextPage = () => {
         {links.map((link) => (
           <li key={link} className={styles.card}>
             <Link href={link}>
-              <a>{link} &rarr;</a>
+              {link}→
             </Link>
           </li>
         ))}

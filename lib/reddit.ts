@@ -65,6 +65,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
               );
               return {
                 ...resolution,
+                priority: i === 0,
                 blurDataURL: plaiceholder.blurDataURL,
               };
             } catch (e) {

@@ -23,6 +23,7 @@ const RedditImages = ({ post }: any): JSX.Element => {
         height={Math.round(image.height * (756 / image.width))}
         placeholder="blur"
         blurDataURL={image.blurDataURL}
+        priority={image.priority}
       />
     ));
   }

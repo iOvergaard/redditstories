@@ -10,23 +10,23 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "marked": "^4.0.10",
-    "next": "^12.1.6",
-    "plaiceholder": "^2.3.0",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "sanitize-html": "^2.7.0",
-    "sharp": "^0.30.5"
+    "marked": "^4.2.12",
+    "next": "^13.1.6",
+    "plaiceholder": "^2.5.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sanitize-html": "^2.9.0",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.176",
-    "@types/marked": "^4.0.2",
-    "@types/node": "16.11.6",
-    "@types/react": "18.0.9",
-    "@types/sanitize-html": "^2.6.2",
-    "eslint": "7",
-    "eslint-config-next": "^12.1.0",
-    "prettier": "^2.5.1",
-    "typescript": "4.7.2"
+    "@types/lodash": "^4.14.191",
+    "@types/marked": "^4.0.8",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/sanitize-html": "^2.8.0",
+    "eslint": "8",
+    "eslint-config-next": "^13.1.6",
+    "prettier": "^2.8.3",
+    "typescript": "4.9.5"
   }
 }

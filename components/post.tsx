@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 import styles from "../styles/Post.module.css";
+import DateTime from "./datetime";
 
 type Props = {
   post: any;
@@ -49,7 +50,7 @@ export default function Post({ post }: Props): JSX.Element {
       <header>
         <h2>{post.title}</h2>
         <p className={styles.byline}>
-          Posted {new Date(post.created_utc * 1000).toUTCString()} by{" "}
+          Posted <DateTime date={new Date(post.created_utc * 1000)} /> by{" "}
           {post.author} with {post.ups} upvotes
         </p>
       </header>

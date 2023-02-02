@@ -1,7 +1,7 @@
-import { pick } from 'lodash';
-import { marked } from 'marked';
-import { getPlaiceholder } from 'plaiceholder';
-import sanitizeHtml from 'sanitize-html';
+import { pick } from "lodash";
+import { marked } from "marked";
+import { getPlaiceholder } from "plaiceholder";
+import sanitizeHtml from "sanitize-html";
 
 export type SubredditOpts = {
   after?: string;
@@ -11,7 +11,12 @@ export type SubredditOpts = {
 async function getPlaiceholderImage(url: string, hasPriority = false) {
   url = url.replace(/&amp;/g, "&");
   const { base64, img } = await getPlaiceholder(url);
-  return { ...img, blurDataURL: base64, placeholder: "blur", priority: hasPriority };
+  return {
+    ...img,
+    blurDataURL: base64,
+    placeholder: "blur",
+    priority: hasPriority,
+  };
 }
 
 export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
@@ -52,12 +57,17 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
         post.images = await Promise.all(
           post.preview.images.map(async (image: any) => {
             try {
-              // const resolution = image.resolutions[image.resolutions.length - 1];
               const resolution = image.source;
-              const img = await getPlaiceholderImage(resolution.url, i === 0);
-              return { ...img, width: resolution.width, height: resolution.height };
+              const plaiceholder = await getPlaiceholderImage(
+                resolution.url,
+                i === 0
+              );
+              return {
+                ...resolution,
+                blurDataURL: plaiceholder.blurDataURL,
+              };
             } catch (e) {
-              console.error('Something went wrong', e)
+              console.error("Something went wrong", e);
               return null;
             }
           })

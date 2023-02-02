@@ -15,11 +15,14 @@ const RedditImages = ({ post }: any): JSX.Element => {
   if (post.images?.length) {
     return post.images.map((image: any) => (
       <Image
-        key={image.src}
+        key={image.url}
         alt=""
-        layout="responsive"
         sizes="756px"
-        {...image}
+        src={image.url}
+        width={756}
+        height={Math.round(image.height * (756 / image.width))}
+        placeholder="blur"
+        blurDataURL={image.blurDataURL}
       />
     ));
   }

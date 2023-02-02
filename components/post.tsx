@@ -9,7 +9,14 @@ type Props = {
 
 const RedditImages = ({ post }: any): JSX.Element => {
   if (post.video) {
-    return <video src={post.video.src} controls loop></video>;
+    return (
+      <video
+        src={post.video.src}
+        controls
+        loop
+        style={{ width: "100%", height: "auto", maxHeight: "100vh" }}
+      ></video>
+    );
   }
 
   if (post.images?.length) {
@@ -17,10 +24,15 @@ const RedditImages = ({ post }: any): JSX.Element => {
       <Image
         key={image.url}
         alt=""
-        sizes="756px"
-        src={image.url}
+        sizes="(max-width: 756px) 100vw, 756px"
         width={756}
         height={Math.round(image.height * (756 / image.width))}
+        style={{
+          width: "100%",
+          height: "auto",
+          maxHeight: "100vh",
+        }}
+        src={image.url}
         placeholder="blur"
         blurDataURL={image.blurDataURL}
         priority={image.priority}

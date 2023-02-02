@@ -6,6 +6,7 @@ import sanitizeHtml from "sanitize-html";
 export type SubredditOpts = {
   after?: string;
   count?: number;
+  raw?: boolean;
 };
 
 async function getPlaiceholderImage(url: string, hasPriority = false) {
@@ -96,18 +97,20 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
       return post;
     })
     .map((post: any) =>
-      pick(post, [
-        "id",
-        "title",
-        "selftext",
-        "author",
-        "created_utc",
-        "url",
-        "ups",
-        "num_comments",
-        "images",
-        "video",
-      ])
+      opts?.raw
+        ? post
+        : pick(post, [
+            "id",
+            "title",
+            "selftext",
+            "author",
+            "created_utc",
+            "url",
+            "ups",
+            "num_comments",
+            "images",
+            "video",
+          ])
     );
   return { after, posts };
 }

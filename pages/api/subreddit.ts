@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   try {
-    const { subreddit, after, count } = req.query;
+    const { subreddit, after, count, raw } = req.query;
 
     if (!subreddit) {
       res.status(400).json({ error: "Subreddit is required" });
@@ -21,6 +21,10 @@ export default async function handler(
 
     if (count) {
       opts.count = +(Array.isArray(count) ? count[0] : count);
+    }
+
+    if (raw) {
+      opts.raw = true;
     }
 
     const subredditData = await tryGetSubreddit(

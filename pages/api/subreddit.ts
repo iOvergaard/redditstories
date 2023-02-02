@@ -8,6 +8,11 @@ export default async function handler(
   try {
     const { subreddit, after, count } = req.query;
 
+    if (!subreddit) {
+      res.status(400).json({ error: "Subreddit is required" });
+      return;
+    }
+
     const opts: SubredditOpts = {};
 
     if (after) {

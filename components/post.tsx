@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
-import styles from '../styles/Post.module.css';
+import styles from "../styles/Post.module.css";
 
 type Props = {
   post: any;
@@ -49,5 +49,5 @@ export default function Post({ post }: Props): JSX.Element {
         </a>
       </p>
     </article>
-  )
+  );
 }

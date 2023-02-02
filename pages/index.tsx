@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -22,15 +21,6 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="Welcome to RedditStories!">
-      <Head>
-        <title>RedditStories</title>
-        <meta
-          name="description"
-          content="Load textual subreddits very fast even on slow connections!"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <form className={styles.form} onSubmit={onSearchSubmit}>
         <input
           className={styles.search}
@@ -44,9 +34,7 @@ const Home: NextPage = () => {
       <ul className={styles.list}>
         {links.map((link) => (
           <li key={link} className={styles.card}>
-            <Link href={link}>
-              {link}→
-            </Link>
+            <Link href={link}>{link}→</Link>
           </li>
         ))}
       </ul>

@@ -1,13 +1,16 @@
-import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
-import Head from 'next/head';
-import { useState } from 'react';
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage,
+} from "next";
+import { useState } from "react";
 
-import Layout from '../../components/layout';
-import Post from '../../components/post';
-import paths from '../../lib/links';
-import { tryGetSubreddit } from '../../lib/reddit';
-import styles from '../../styles/Subreddit.module.css';
-
+import Layout from "../../components/layout";
+import Post from "../../components/post";
+import paths from "../../lib/links";
+import { tryGetSubreddit } from "../../lib/reddit";
+import styles from "../../styles/Subreddit.module.css";
 
 type Props = {
   subredditName: string;
@@ -31,7 +34,7 @@ const Subreddit: NextPage<Props> = (props: Props) => {
 
     if (response) {
       setAfter(response.after);
-      setCount(oldCount => oldCount + 25);
+      setCount((oldCount) => oldCount + 25);
       setPosts((oldPosts: any) => [...oldPosts, ...response.posts]);
     }
 
@@ -40,21 +43,12 @@ const Subreddit: NextPage<Props> = (props: Props) => {
 
   return (
     <Layout title={props.subredditName}>
-      <Head>
-        <title>RedditStories - {props.subredditName}</title>
-        <meta
-          name="description"
-          content="Load textual subreddits very fast even on slow connections!"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {posts?.length
         ? posts.map((post: any) => (
-          <div key={post.id} className={styles.post}>
-            <Post post={post} />
-          </div>
-        ))
+            <div key={post.id} className={styles.post}>
+              <Post post={post} />
+            </div>
+          ))
         : "No posts found"}
       <button type="button" onClick={onLoadMore}>
         {isLoading ? "Loading..." : "Load more"}

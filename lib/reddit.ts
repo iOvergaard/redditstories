@@ -58,7 +58,15 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
         post.images = await Promise.all(
           post.preview.images.map(async (image: any) => {
             try {
-              const resolution = image.source;
+              let resolution;
+
+              // First check if it has a variants.gif.source property and use that instead
+              if (image.variants?.gif?.source) {
+                resolution = image.variants.gif.source;
+              } else {
+                resolution = image.source;
+              }
+
               const plaiceholder = await getPlaiceholderImage(
                 resolution.url,
                 i === 0

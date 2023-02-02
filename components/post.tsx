@@ -47,15 +47,15 @@ export default function Post({ post }: Props): JSX.Element {
         dangerouslySetInnerHTML={{ __html: post.selftext }}
       ></div>
       <p>
+        <a target="_blank" rel="noopener noreferrer" href={post.url}>
+          Go to post
+        </a>
+        &nbsp;
         <a
           target="_blank"
           rel="noopener noreferrer"
           href={`https://www.reddit.com${post.permalink}`}
         >
-          Go to post
-        </a>
-        &nbsp;
-        <a target="_blank" rel="noopener noreferrer" href={post.url}>
           See comments ({post.num_comments})
         </a>
       </p>

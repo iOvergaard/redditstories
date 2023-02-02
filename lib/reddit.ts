@@ -89,6 +89,11 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
           src: post.media.reddit_video.fallback_url,
           isGif: post.media.reddit_video.is_gif,
         };
+      } else if (post.preview?.reddit_video_preview) {
+        post.video = {
+          src: post.preview.reddit_video_preview.fallback_url,
+          isGif: post.preview.reddit_video_preview.is_gif,
+        };
       }
 
       return post;

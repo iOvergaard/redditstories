@@ -106,6 +106,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
             "author",
             "created_utc",
             "url",
+            "permalink",
             "ups",
             "num_comments",
             "images",

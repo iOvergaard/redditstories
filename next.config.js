@@ -42,10 +42,6 @@ module.exports = {
   images: {
     domains: ["external-preview.redd.it", "preview.redd.it"],
   },
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
   async headers() {
     return [
       {

@@ -3,6 +3,9 @@
   word-break: break-word;
   hyphens: auto;
   font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
 }
 
 .post video {

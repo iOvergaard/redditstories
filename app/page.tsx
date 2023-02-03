@@ -14,7 +14,7 @@ export default function Home() {
       <ul className={styles.list}>
         {links.map((link) => (
           <li key={link} className={styles.card}>
-            <Link href={link}>{link}→</Link>
+            <Link href={`/r/${link}`}>{`/r/${link}`}→</Link>
           </li>
         ))}
       </ul>

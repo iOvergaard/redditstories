@@ -1,8 +1,11 @@
+"use client";
+
 interface Props {
-  date: Date;
+  date: number;
 }
 
 export default function DateTime({ date }: Props): JSX.Element {
+  const dateObj = new Date(date);
   const formatted = Intl.DateTimeFormat("en", {
     year: "numeric",
     month: "short",
@@ -10,6 +13,6 @@ export default function DateTime({ date }: Props): JSX.Element {
     hour: "numeric",
     minute: "numeric",
     timeZoneName: "short",
-  }).format(date);
-  return <time dateTime={date.toISOString()}>{formatted}</time>;
+  }).format(dateObj);
+  return <time dateTime={dateObj.toISOString()}>{formatted}</time>;
 }

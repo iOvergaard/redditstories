@@ -15,6 +15,8 @@ interface Params {
   };
 }
 
+export const revalidate = 300;
+
 export default async function Page({ params, searchParams }: Params) {
   console.log("params", params);
   const subreddit = params.subreddit;
@@ -28,7 +30,7 @@ export default async function Page({ params, searchParams }: Params) {
   }
 
   return (
-    <div>
+    <article>
       <Link href="/" passHref>
         <h1 className={styles.title}>{subreddit}</h1>
       </Link>
@@ -39,7 +41,7 @@ export default async function Page({ params, searchParams }: Params) {
       <Link href={`/r/${subreddit}?after=${data.after}&count=${count + 25}`}>
         Next page
       </Link>
-    </div>
+    </article>
   );
 }
 

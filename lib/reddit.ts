@@ -1,25 +1,12 @@
 import "server-only";
 
 import { pick } from "lodash";
-import { marked } from "marked";
-import { getPlaiceholder } from "plaiceholder";
-import sanitizeHtml from "sanitize-html";
 
 export type SubredditOpts = {
   after?: string;
   count?: number;
   raw?: boolean;
 };
-
-async function getPlaiceholderImage(url: string, hasPriority = false) {
-  url = url.replace(/&amp;/g, "&");
-  const { base64, img } = await getPlaiceholder(url);
-  return {
-    ...img,
-    blurDataURL: base64,
-    priority: hasPriority,
-  };
-}
 
 export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
   const baseUrl = "https://www.reddit.com/";
@@ -71,7 +58,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
                 resolution = image.source;
               }
 
-              return getPlaiceholderImage(resolution.url, i === 0);
+              return resolution.url;
             })
           );
         }
@@ -93,15 +80,6 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
     );
 
     posts = posts
-      .map((post: any) => {
-        try {
-          post.selftext = marked(post.selftext, { mangle: true });
-          post.selftext = sanitizeHtml(post.selftext);
-        } catch (e) {
-          console.error("Could not parse selftext", e);
-        }
-        return post;
-      })
       .map((post: any) =>
         opts?.raw
           ? post

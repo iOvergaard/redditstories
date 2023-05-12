@@ -1,11 +1,14 @@
 import styles from "./Post.module.css";
 import DateTime from "./datetime";
 import { Suspense } from "react";
-import RedditImages from "./RedditImages";
+import dynamic from "next/dynamic";
 
 type Props = {
   post: any;
 };
+
+const ComponentImages = dynamic(() => import('./RedditImages'));
+const ComponentText = dynamic(() => import('./PostText'))
 
 export default function Post({ post }: Props): JSX.Element {
   return (
@@ -17,18 +20,23 @@ export default function Post({ post }: Props): JSX.Element {
           with {post.ups} upvotes
         </p>
       </header>
+
       <hr />
-      {post.video || post.images?.length ? (
+
+      {!!post.video || post.images?.length ? (
         <Suspense fallback={<p>Rendering media</p>}>
-          <RedditImages post={post} />
+          <ComponentImages post={post} />
         </Suspense>
       ) : (
         <></>
       )}
-      <div
-        className={styles.text}
-        dangerouslySetInnerHTML={{ __html: post.selftext }}
-      ></div>
+
+      {!!post.selftext &&
+        <Suspense fallback={''}>
+          <ComponentText safetext={post.selftext} />
+        </Suspense>
+      }
+
       <p>
         <a target="_blank" rel="noopener noreferrer" href={post.url}>
           Go to post

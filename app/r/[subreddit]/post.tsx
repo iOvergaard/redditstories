@@ -1,12 +1,11 @@
 import styles from "./Post.module.css";
 import DateTime from "./datetime";
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import RedditImages from "./RedditImages";
 
 type Props = {
   post: any;
 };
-
-const RedditImages = lazy(() => import("./RedditImages"));
 
 export default function Post({ post }: Props): JSX.Element {
   return (

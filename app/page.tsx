@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { Suspense } from "react";
+import React from "react";
 import styles from "./Home.module.css";
 import links from "../lib/links";
 import { Search } from "./Search";
@@ -12,14 +12,7 @@ export default function Home() {
     <>
       <h1>Welcome to RedditStories!</h1>
 
-      <Suspense fallback={<input
-        className={styles.search}
-        type="search"
-        name="search"
-        placeholder="Type subreddit..."
-      />}>
-        <Search />
-      </Suspense>
+      <Search />
 
       <ul className={styles.list}>
         {links.map((link) => (

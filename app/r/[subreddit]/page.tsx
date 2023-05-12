@@ -4,26 +4,27 @@ import Link from "next/link";
 import { tryGetSubreddit } from "../../../lib/reddit";
 import { notFound } from "next/navigation";
 import Post from "./post";
+import { Metadata } from "next";
 
-interface Params {
+type Props = {
   params: {
     subreddit: string;
   };
-  searchParams: {
-    after: string;
-    count: string;
+};
+
+export function generateMetadata({ params }: Props): Metadata {
+  return {
+    title: `r/${params.subreddit}`,
+    description: `r/${params.subreddit} on reddit`,
   };
 }
 
 export const revalidate = 300;
 
-export default async function Page({ params, searchParams }: Params) {
-  console.log("params", params);
+export default async function Page({ params }: Props) {
   const subreddit = params.subreddit;
-  const after = searchParams.after;
-  const count = searchParams.count ? parseInt(searchParams.count) : 0;
 
-  const data = await tryGetSubreddit(subreddit, { after, count });
+  const data = await tryGetSubreddit(subreddit);
 
   if (!data) {
     notFound();
@@ -37,10 +38,6 @@ export default async function Page({ params, searchParams }: Params) {
       {data.posts?.length
         ? data.posts.map((post: any) => <Post key={post.id} post={post} />)
         : "This subreddit has no posts"}
-
-      <Link href={`/r/${subreddit}?after=${data.after}&count=${count + 25}`}>
-        Next page
-      </Link>
     </article>
   );
 }

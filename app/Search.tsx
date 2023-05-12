@@ -6,7 +6,7 @@ import styles from "./Search.module.css";
 export function Search() {
   const onSearchSubmit = (event: any) => {
     event.preventDefault();
-    const subreddit = event.target.search.value;
+    const subreddit = encodeURIComponent(event.target.search.value);
     window.location.href = `/r/${subreddit}`
   };
 

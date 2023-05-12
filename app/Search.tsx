@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import styles from "./Search.module.css";
 
-export default function Search(): JSX.Element {
+export function Search(): JSX.Element {
   const router = useRouter();
 
   const onSearchSubmit = (event: any) => {

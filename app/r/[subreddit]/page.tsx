@@ -12,6 +12,8 @@ type Props = {
   };
 };
 
+export const dynamic = "force-static";
+
 export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `r/${params.subreddit}`,

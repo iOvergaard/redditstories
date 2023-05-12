@@ -41,6 +41,11 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
 
   try {
     const request = await fetch(requestUrl, { next: { revalidate: 300 } });
+
+    if (!request.ok) {
+      throw new Error("Request to Reddit not ok");
+    }
+
     const meta = await request.json();
     if (!meta?.data?.children?.length) {
       throw new Error("No data");
@@ -117,6 +122,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
     return { after, posts };
   } catch (e) {
     // throw new Error(`Could not fetch data: ${(e as Error).message}`);
+    console.error(`Could not fetch data: ${(e as Error).message}`)
     return null;
   }
 }

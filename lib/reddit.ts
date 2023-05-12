@@ -45,7 +45,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
       .map((post: any) => post.data);
 
     posts = await Promise.all(
-      posts.map(async (post: any, i: number) => {
+      posts.map(async (post: any) => {
         if (post.preview?.images?.length) {
           post.images = await Promise.all(
             post.preview.images.map((image: any) => {

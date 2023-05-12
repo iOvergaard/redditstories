@@ -75,28 +75,25 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
           };
         }
 
+        if (!opts?.raw) {
+          pick(post, [
+            "id",
+            "title",
+            "selftext",
+            "author",
+            "created_utc",
+            "url",
+            "permalink",
+            "ups",
+            "num_comments",
+            "images",
+            "video",
+          ])
+        }
+
         return post;
       })
     );
-
-    posts = posts
-      .map((post: any) =>
-        opts?.raw
-          ? post
-          : pick(post, [
-              "id",
-              "title",
-              "selftext",
-              "author",
-              "created_utc",
-              "url",
-              "permalink",
-              "ups",
-              "num_comments",
-              "images",
-              "video",
-            ])
-      );
     return { after, posts };
   } catch (e) {
     // throw new Error(`Could not fetch data: ${(e as Error).message}`);

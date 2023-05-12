@@ -1,15 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import React from "react";
 import styles from "./Search.module.css";
 
-export function Search(): JSX.Element {
-  const router = useRouter();
-
+export function Search() {
   const onSearchSubmit = (event: any) => {
     event.preventDefault();
     const subreddit = event.target.search.value;
-    router.push(`/r/${subreddit}`);
+    window.location.href = `/r/${subreddit}`
   };
 
   return (

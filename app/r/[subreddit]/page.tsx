@@ -36,7 +36,7 @@ export default async function Page({ params }: Props) {
         <h1 className={styles.title}>{subreddit}</h1>
       </Link>
       {data.posts?.length
-        ? data.posts.map((post: any) => <Post key={post.id} post={post} />)
+        ? data.posts.map((post: any, index: number) => <Post key={post.id} post={post} isFirst={index === 0} />)
         : "This subreddit has no posts"}
     </article>
   );

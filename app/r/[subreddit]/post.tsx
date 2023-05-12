@@ -6,12 +6,13 @@ import { PlaceholderText } from "../../../components/PlaceholderText";
 
 type Props = {
   post: any;
+  isFirst: boolean;
 };
 
 const ComponentImages = dynamic(() => import('./RedditImages'));
 const ComponentText = dynamic(() => import('./PostText'))
 
-export default function Post({ post }: Props): JSX.Element {
+export default function Post({ post, isFirst }: Props): JSX.Element {
   return (
     <article className={styles.post}>
       <header>
@@ -26,7 +27,7 @@ export default function Post({ post }: Props): JSX.Element {
 
       {!!post.video || post.images?.length ? (
         <Suspense>
-          <ComponentImages post={post} />
+          <ComponentImages post={post} isFirst={isFirst} />
         </Suspense>
       ) : (
         <></>

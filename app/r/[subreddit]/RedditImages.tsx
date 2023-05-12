@@ -6,6 +6,7 @@ import { getPlaiceholder } from "plaiceholder";
 
 type Props = {
   post: any;
+  isFirst: boolean;
 };
 
 async function getPlaiceholderImage(url: string, hasPriority = false) {
@@ -18,7 +19,7 @@ async function getPlaiceholderImage(url: string, hasPriority = false) {
   };
 }
 
-export default function RedditImages({ post }: Props): JSX.Element {
+export default function RedditImages({ post, isFirst }: Props): JSX.Element {
   if (post.video) {
     return (
       <video
@@ -36,7 +37,7 @@ export default function RedditImages({ post }: Props): JSX.Element {
 
   if (post.images?.length) {
     return post.images.map(async (imageUrl: any) => {
-      const image = await getPlaiceholderImage(imageUrl);
+      const image = await getPlaiceholderImage(imageUrl, isFirst);
       return <Image
         key={image.src}
         alt=""

@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-export const dynamic = "force-static";
+export const revalidate = 300;
 
 export function generateMetadata({ params }: Props): Metadata {
   return {
@@ -20,8 +20,6 @@ export function generateMetadata({ params }: Props): Metadata {
     description: `r/${params.subreddit} on reddit`,
   };
 }
-
-export const revalidate = 300;
 
 export default async function Page({ params }: Props) {
   const subreddit = params.subreddit;

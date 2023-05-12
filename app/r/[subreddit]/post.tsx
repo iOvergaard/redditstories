@@ -2,6 +2,7 @@ import styles from "./Post.module.css";
 import DateTime from "./datetime";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
+import { PlaceholderText } from "../../../components/PlaceholderText";
 
 type Props = {
   post: any;
@@ -24,7 +25,7 @@ export default function Post({ post }: Props): JSX.Element {
       <hr />
 
       {!!post.video || post.images?.length ? (
-        <Suspense fallback={<p>Rendering media</p>}>
+        <Suspense>
           <ComponentImages post={post} />
         </Suspense>
       ) : (
@@ -32,7 +33,7 @@ export default function Post({ post }: Props): JSX.Element {
       )}
 
       {!!post.selftext &&
-        <Suspense fallback={''}>
+        <Suspense fallback={<PlaceholderText textLength={post.selftext.length} />}>
           <ComponentText safetext={post.selftext} />
         </Suspense>
       }

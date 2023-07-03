@@ -9,6 +9,7 @@ type Props = {
  */
 export function PlaceholderText({ textLength }: Props) {
     return <div style={{
+        wordBreak: "break-all",
         filter: "blur(5px)",
         width: "100%",
         backgroundColor: "#ccc",

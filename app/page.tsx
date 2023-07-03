@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./Home.module.css";
 import links from "../lib/links";
 import { Search } from "./Search";
-import { Spinner } from "../components/Spinner";
 
 export const dynamic = "force-static";
 export const revalidate = false;

@@ -33,6 +33,10 @@ body {
   color: var(--text-color);
 }
 
+h1 {
+  text-align: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;

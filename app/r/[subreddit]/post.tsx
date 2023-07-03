@@ -23,8 +23,6 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
         </a>
       </header>
 
-      <hr />
-
       {!!post.video || post.images?.length ? (
         <RedditImages post={post} isFirst={isFirst} />
       ) : (

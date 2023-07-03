@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@plaiceholder/next": "2.5.0",
     "lodash": "^4.17.21",
     "marked": "^5.1.0",
     "next": "^13.4.8",

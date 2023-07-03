@@ -18,8 +18,6 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto",
     "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
   font-size: 21px;
@@ -31,6 +29,11 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--background-color);
   color: var(--text-color);
+}
+
+body {
+  margin: 0;
+  padding: 0 1rem;
 }
 
 h1 {
@@ -78,7 +81,7 @@ button:hover {
 @media screen and (max-width: 800px) {
   html,
   body {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
   }
 }

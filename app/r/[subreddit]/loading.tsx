@@ -5,7 +5,7 @@ export default function Loading(): JSX.Element {
   return (
     <>
       <Link href="/" passHref>
-        <h1>Loading subreddit...</h1>
+        <h1>Loading subreddit</h1>
       </Link>
       <Spinner />
     </>

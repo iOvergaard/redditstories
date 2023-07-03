@@ -1,7 +1,5 @@
 import styles from "./Post.module.css";
 import DateTime from "./datetime";
-import { Suspense } from "react";
-import { PlaceholderText } from "../../../components/PlaceholderText";
 import RedditImages from "./RedditImages";
 import PostText from "./PostText";
 
@@ -30,9 +28,7 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
       )}
 
       {!!post.selftext &&
-        <Suspense fallback={<PlaceholderText textLength={post.selftext.length} />}>
-          <PostText safetext={post.selftext} />
-        </Suspense>
+        <PostText safetext={post.selftext} />
       }
 
       <footer>

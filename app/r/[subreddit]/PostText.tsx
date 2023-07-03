@@ -12,7 +12,7 @@ type Props = {
 
 export default function PostText({ safetext }: Props) {
     try {
-        safetext = marked(safetext, { mangle: true });
+        safetext = marked(safetext, { mangle: false, headerIds: false });
         safetext = sanitizeHtml(safetext);
     } catch (e) {
         safetext = ''

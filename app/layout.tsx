@@ -8,6 +8,15 @@ export const metadata: Metadata = {
     template: '%s | RedditStories',
     default: 'RedditStories',
   },
+  description: 'Load textual subreddits very fast even on slow connections!',
+  manifest: '/manifest.json',
+  themeColor: '#fff',
+  appleWebApp: {
+    statusBarStyle: 'default',
+    title: 'RedditStories',
+    startupImage: '/images/icons/icon-512x512.png'
+  },
+  viewport: 'width=device-width, initial-scale=1.0',
 };
 
 export default function RootLayout({

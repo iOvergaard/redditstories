@@ -9,9 +9,9 @@ type Props = {
   isFirst: boolean;
 };
 
-async function getPlaiceholderImage(url: string, hasPriority = false) {
-  url = url.replace(/&amp;/g, "&");
-  const { base64, img } = await getPlaiceholder(url);
+async function getPlaiceholderImage(src: string, hasPriority = false) {
+  src = src.replace(/&amp;/g, "&");
+  const { base64, img } = await getPlaiceholder(src);
   return {
     ...img,
     blurDataURL: base64,
@@ -26,6 +26,10 @@ export default function RedditImages({ post, isFirst }: Props): JSX.Element {
         src={post.video.src}
         controls
         loop
+        muted
+        autoPlay
+        playsInline
+        preload="auto"
         style={{
           width: "100%",
           height: "auto",

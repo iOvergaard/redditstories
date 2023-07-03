@@ -5,11 +5,13 @@
   display: grid;
   justify-content: center;
   grid-template-columns: auto auto;
-  grid-gap: 1rem;
+  grid-gap: 0.5rem;
+  font-size: 1rem;
 }
 
 .search {
   width: 300px;
   max-width: 50vw;
   padding: 0.5rem;
+  font-size: 1rem;
 }

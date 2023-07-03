@@ -8,7 +8,7 @@
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    --background-color: black;
+    --background-color: #292929;
     --background-color-invert: white;
     --text-color: white;
     --text-color-invert: #292929;

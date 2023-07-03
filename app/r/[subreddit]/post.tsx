@@ -17,10 +17,6 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
     <article className={styles.post}>
       <header>
         <h2>{post.title}</h2>
-        <p className={styles.byline}>
-          Posted <DateTime date={post.created_utc * 1000} /> by {post.author}{" "}
-          with {post.ups} upvotes
-        </p>
       </header>
 
       <hr />
@@ -39,19 +35,27 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
         </Suspense>
       }
 
-      <p>
-        <a target="_blank" rel="noopener noreferrer" href={post.url}>
-          Go to post
-        </a>
-        &nbsp;
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://www.reddit.com${post.permalink}`}
-        >
-          See comments ({post.num_comments})
-        </a>
-      </p>
+      <footer>
+        <p className={styles.byline}>
+          <strong>{post.author}</strong>
+          &nbsp;|&nbsp;
+          <DateTime date={post.created_utc * 1000} />
+          &nbsp;|&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href={post.url}>
+            Link
+          </a>
+          &nbsp;|&nbsp;
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://www.reddit.com${post.permalink}`}
+          >
+            Comments ({post.num_comments})
+          </a>
+          &nbsp;|&nbsp;
+          <strong>⬆️ {post.ups}</strong>
+        </p>
+      </footer>
     </article>
   );
 }

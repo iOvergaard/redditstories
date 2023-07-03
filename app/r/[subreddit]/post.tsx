@@ -1,16 +1,14 @@
 import styles from "./Post.module.css";
 import DateTime from "./datetime";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { PlaceholderText } from "../../../components/PlaceholderText";
+import RedditImages from "./RedditImages";
+import PostText from "./PostText";
 
 type Props = {
   post: any;
   isFirst: boolean;
 };
-
-const ComponentImages = dynamic(() => import('./RedditImages'));
-const ComponentText = dynamic(() => import('./PostText'))
 
 export default function Post({ post, isFirst }: Props): JSX.Element {
   return (
@@ -22,16 +20,14 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
       <hr />
 
       {!!post.video || post.images?.length ? (
-        <Suspense>
-          <ComponentImages post={post} isFirst={isFirst} />
-        </Suspense>
+        <RedditImages post={post} isFirst={isFirst} />
       ) : (
         <></>
       )}
 
       {!!post.selftext &&
         <Suspense fallback={<PlaceholderText textLength={post.selftext.length} />}>
-          <ComponentText safetext={post.selftext} />
+          <PostText safetext={post.selftext} />
         </Suspense>
       }
 

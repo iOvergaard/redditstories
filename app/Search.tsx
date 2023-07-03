@@ -2,12 +2,17 @@
 
 import React from "react";
 import styles from "./Search.module.css";
+import { useRouter } from "next/navigation";
 
 export function Search() {
+  const router = useRouter()
+  
   const onSearchSubmit = (event: any) => {
     event.preventDefault();
     const subreddit = encodeURIComponent(event.target.search.value);
-    window.location.href = `/r/${subreddit}`
+    const formattedPath = `/r/${subreddit}`
+    router.push(formattedPath, {forceOptimisticNavigation: true});
+    //window.location.pathname = formattedPath;
   };
 
   return (

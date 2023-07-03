@@ -14,7 +14,13 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
   return (
     <article className={styles.post}>
       <header>
-        <h2>{post.title}</h2>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={`https://www.reddit.com${post.permalink}`}
+        >
+          <h2>{post.title}</h2>
+        </a>
       </header>
 
       <hr />

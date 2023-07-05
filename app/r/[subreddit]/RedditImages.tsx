@@ -27,7 +27,6 @@ export default function RedditImages({ post, isFirst }: Props): JSX.Element {
         controls
         loop
         muted
-        autoPlay
         playsInline
         preload="auto"
         style={{

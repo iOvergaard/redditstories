@@ -1,12 +1,12 @@
-import styles from "./Post.module.css";
-import RedditImages from "@/components/RedditImages";
-import DateTime from "@/components/DateTime";
-import PostText from "@/components/PostText";
+import styles from "./Post.module.css"
+import RedditImages from "@/components/RedditImages"
+import DateTime from "@/components/DateTime"
+import PostText from "@/components/PostText"
 
 type Props = {
-  post: any;
-  isFirst: boolean;
-};
+  post: any
+  isFirst: boolean
+}
 
 export default function Post({ post, isFirst }: Props): JSX.Element {
   return (
@@ -27,9 +27,7 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
         <></>
       )}
 
-      {!!post.selftext &&
-        <PostText safetext={post.selftext} />
-      }
+      {!!post.selftext && <PostText safetext={post.selftext} />}
 
       <footer>
         <p className={styles.byline}>
@@ -53,5 +51,5 @@ export default function Post({ post, isFirst }: Props): JSX.Element {
         </p>
       </footer>
     </article>
-  );
+  )
 }

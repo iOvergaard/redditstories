@@ -1,16 +1,11 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "next/core-web-vitals"
-  ],
+  "extends": ["eslint:recommended", "next/core-web-vitals"],
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
+      "files": ["*.ts", "*.tsx"],
       "rules": {
-        "no-undef": "off"
+        "no-undef": "off",
+        "semi": ["error", "never"]
       }
     }
   ]

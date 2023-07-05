@@ -1,10 +1,10 @@
-import Search from "@/components/Search";
-import links from "@/lib/links";
-import Link from "next/link";
-import styles from "./Home.module.css";
+import Search from "@/components/Search"
+import links from "@/lib/links"
+import Link from "next/link"
+import styles from "./Home.module.css"
 
-export const dynamic = "force-static";
-export const revalidate = false;
+export const dynamic = "force-static"
+export const revalidate = false
 
 export default function Home() {
   return (
@@ -14,12 +14,12 @@ export default function Home() {
       <Search />
 
       <ul className={styles.list}>
-        {links.map((link) => (
+        {links.map(link => (
           <li key={link} className={styles.card}>
             <Link href={`/r/${encodeURIComponent(link)}`}>{`/r/${link}`}→</Link>
           </li>
         ))}
       </ul>
     </>
-  );
+  )
 }

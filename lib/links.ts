@@ -7,6 +7,6 @@ const links = [
   "tifu",
   "justnomil",
   "gonewildstories",
-];
+]
 
-export default links;
+export default links

@@ -1,1 +1,9 @@
-{}
+{
+    "semi": false,
+    "singleQuote": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "jsxSingleQuote": false,
+    "useTabs": false,
+    "tabWidth": 2
+}

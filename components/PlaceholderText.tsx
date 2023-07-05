@@ -1,14 +1,16 @@
-import React from "react";
+import React from "react"
 
 type Props = {
-    textLength: number
+  textLength: number
 }
 
 /**
  * Function to generate blurred placeholder text of the given length in a paragraph
  */
 export default function PlaceholderText({ textLength }: Props) {
-    return <div style={{
+  return (
+    <div
+      style={{
         wordBreak: "break-all",
         filter: "blur(5px)",
         width: "100%",
@@ -20,8 +22,11 @@ export default function PlaceholderText({ textLength }: Props) {
         backgroundSize: "400% 100%",
         backgroundPosition: "100% 50%",
         backgroundRepeat: "no-repeat",
-        backgroundImage: "linear-gradient(to right, #ccc 10%, #ddd 18%, #ccc 33%)",
-    }}>
-        {"e".repeat(textLength)}
+        backgroundImage:
+          "linear-gradient(to right, #ccc 10%, #ddd 18%, #ccc 33%)",
+      }}
+    >
+      {"e".repeat(textLength)}
     </div>
+  )
 }

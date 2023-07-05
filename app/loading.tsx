@@ -1,5 +1,5 @@
-import Spinner from "@/components/Spinner";
-import Link from "next/link";
+import Spinner from "@/components/Spinner"
+import Link from "next/link"
 
 export default function Loading(): JSX.Element {
   return (
@@ -9,5 +9,5 @@ export default function Loading(): JSX.Element {
       </Link>
       <Spinner />
     </>
-  );
+  )
 }

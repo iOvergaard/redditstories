@@ -1,28 +1,28 @@
-import "./global.css";
-import React from "react";
-import styles from "./Layout.module.css";
-import type { Metadata } from "next";
+import "./global.css"
+import React from "react"
+import styles from "./Layout.module.css"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | RedditStories',
-    default: 'RedditStories',
+    template: "%s | RedditStories",
+    default: "RedditStories",
   },
-  description: 'Load textual subreddits very fast even on slow connections!',
-  manifest: '/manifest.json',
-  themeColor: '#fff',
+  description: "Load textual subreddits very fast even on slow connections!",
+  manifest: "/manifest.json",
+  themeColor: "#fff",
   appleWebApp: {
-    statusBarStyle: 'default',
-    title: 'RedditStories',
-    startupImage: '/images/icons/icon-512x512.png'
+    statusBarStyle: "default",
+    title: "RedditStories",
+    startupImage: "/images/icons/icon-512x512.png",
   },
-  viewport: 'width=device-width, initial-scale=1.0',
-};
+  viewport: "width=device-width, initial-scale=1.0",
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
@@ -32,5 +32,5 @@ export default function RootLayout({
         </div>
       </body>
     </html>
-  );
+  )
 }

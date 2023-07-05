@@ -1,10 +1,10 @@
-import paths from "../../../lib/links";
-import styles from "./Subreddit.module.css";
-import Link from "next/link";
-import { tryGetSubreddit } from "../../../lib/reddit";
-import { notFound } from "next/navigation";
-import Post from "./post";
 import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import styles from "./Subreddit.module.css";
+import Post from "./post";
+import { tryGetSubreddit } from "@/lib/reddit";
+import paths from "@/lib/links";
 
 type Props = {
   params: {

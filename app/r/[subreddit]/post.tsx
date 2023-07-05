@@ -1,7 +1,7 @@
 import styles from "./Post.module.css";
-import DateTime from "./datetime";
-import RedditImages from "./RedditImages";
-import PostText from "./PostText";
+import RedditImages from "@/components/RedditImages";
+import DateTime from "@/components/DateTime";
+import PostText from "@/components/PostText";
 
 type Props = {
   post: any;

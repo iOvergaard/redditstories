@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./Search.module.css";
 import { useRouter } from "next/navigation";
 
-export function Search() {
+export default function Search() {
   const router = useRouter()
   
   const onSearchSubmit = (event: any) => {

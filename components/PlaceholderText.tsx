@@ -7,7 +7,7 @@ type Props = {
 /**
  * Function to generate blurred placeholder text of the given length in a paragraph
  */
-export function PlaceholderText({ textLength }: Props) {
+export default function PlaceholderText({ textLength }: Props) {
     return <div style={{
         wordBreak: "break-all",
         filter: "blur(5px)",

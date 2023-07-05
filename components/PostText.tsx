@@ -4,7 +4,7 @@ import React from "react";
 import { marked } from "marked";
 import sanitizeHtml from "sanitize-html";
 
-import styles from "./Post.module.css";
+import styles from "./PostText.module.css";
 
 type Props = {
     safetext: string;

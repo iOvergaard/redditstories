@@ -1,8 +1,7 @@
+import Search from "@/components/Search";
+import links from "@/lib/links";
 import Link from "next/link";
-import React from "react";
 import styles from "./Home.module.css";
-import links from "../lib/links";
-import { Search } from "./Search";
 
 export const dynamic = "force-static";
 export const revalidate = false;

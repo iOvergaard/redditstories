@@ -1,6 +1,6 @@
+import PlaceholderText from "@/components/PlaceholderText";
+import Spinner from "@/components/Spinner";
 import Link from "next/link";
-import Spinner from "../../../components/Spinner";
-import { PlaceholderText } from "../../../components/PlaceholderText";
 
 export default function Loading(): JSX.Element {
   return (

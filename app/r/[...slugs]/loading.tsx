@@ -1,4 +1,3 @@
-import PlaceholderText from "@/components/PlaceholderText"
 import Spinner from "@/components/Spinner"
 import Link from "next/link"
 
@@ -9,7 +8,6 @@ export default function Loading(): JSX.Element {
         <h1>Loading subreddit</h1>
       </Link>
       <Spinner />
-      <PlaceholderText textLength={100} />
     </>
   )
 }

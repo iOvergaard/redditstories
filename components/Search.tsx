@@ -9,10 +9,10 @@ export default function Search() {
 
   const onSearchSubmit = (event: any) => {
     event.preventDefault()
-    const subreddit = encodeURIComponent(event.target.search.value)
+    const searchValue: string = event.target.search.value
+    const subreddit = encodeURIComponent(searchValue.toLowerCase().trim())
     const formattedPath = `/r/${subreddit}`
     router.push(formattedPath, { forceOptimisticNavigation: true })
-    //window.location.pathname = formattedPath;
   }
 
   return (

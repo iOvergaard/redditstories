@@ -26,7 +26,7 @@ export default async function Page({ params: { slugs } }: Props) {
   console.log("slugs", slugs)
   const subreddit = slugs[0]
   const after = slugs[1]
-  const count = slugs[2] ? parseInt(slugs[2]) : 0
+  const count = slugs[2] ? parseInt(slugs[2]) : undefined
 
   const data = await tryGetSubreddit(subreddit, { after, count })
 
@@ -39,7 +39,7 @@ export default async function Page({ params: { slugs } }: Props) {
       return null
     }
 
-    const nextCount = count + 25
+    const nextCount = count ?? 0 + data.posts.length
 
     return (
       <Link href={`/r/${subreddit}/${data.after}/${nextCount}`}>

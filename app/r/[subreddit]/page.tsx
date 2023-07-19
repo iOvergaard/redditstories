@@ -4,7 +4,6 @@ import { notFound } from "next/navigation"
 import styles from "./Subreddit.module.css"
 import Post from "./post"
 import { tryGetSubreddit } from "@/lib/reddit"
-import paths from "@/lib/links"
 
 type Props = {
   params: {
@@ -12,7 +11,7 @@ type Props = {
   }
 }
 
-export const revalidate = 300
+export const revalidate = 10
 
 export function generateMetadata({ params }: Props): Metadata {
   return {
@@ -42,8 +41,4 @@ export default async function Page({ params }: Props) {
         : "This subreddit has no posts"}
     </article>
   )
-}
-
-export function generateStaticParams() {
-  return paths.map(subreddit => ({ subreddit }))
 }

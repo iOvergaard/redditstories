@@ -23,7 +23,6 @@ export function generateMetadata({ params: { slugs } }: Props): Metadata {
 }
 
 export default async function Page({ params: { slugs } }: Props) {
-  console.log("slugs", slugs)
   const subreddit = slugs[0]
   const after = slugs[1]
   const count = slugs[2] ? parseInt(slugs[2]) : undefined

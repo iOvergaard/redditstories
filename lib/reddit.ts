@@ -3,10 +3,10 @@ import "server-only"
 import { pick } from "lodash"
 
 export type SubredditOpts = {
-  after?: string;
-  count?: number;
-  raw?: boolean;
-};
+  after?: string
+  count?: number
+  raw?: boolean
+}
 
 export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
   const baseUrl = "https://www.reddit.com/"
@@ -45,7 +45,9 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
       .map((post: any) => post.data)
 
     posts = await Promise.all(
-      posts.map(async (post: any) => {
+      posts.map(async (post: any, index: number) => {
+        console.log(`[Reddit] Processing post ${index + 1}/${posts.length}`)
+
         if (post.preview?.images?.length) {
           post.images = await Promise.all(
             post.preview.images.map((image: any) => {
@@ -59,7 +61,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
               }
 
               return resolution.url
-            })
+            }),
           )
         }
 
@@ -92,7 +94,7 @@ export async function tryGetSubreddit(name: string, opts?: SubredditOpts) {
         }
 
         return post
-      })
+      }),
     )
     return { after, posts }
   } catch (e) {
